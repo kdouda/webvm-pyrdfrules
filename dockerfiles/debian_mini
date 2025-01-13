@@ -1,12 +1,9 @@
-FROM --platform=i386 i386/debian:buster
+FROM --platform=i386 i386/alpine:latest
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get clean && apt-get update && apt-get -y upgrade
-RUN apt-get -y install apt-utils gcc \
-	python3 unzip ruby \
-	fakeroot dbus base vim whiptail \
-	patch wamerican ucf manpages \
-	file make dialog curl \
-	less netcat-openbsd python3-pip
+RUN apk clean && apk update && apk -y upgrade
+RUN apk add python3
+
+RUN python -m ensurepip --upgrade
 
 RUN useradd -m user && echo "user:password" | chpasswd
 COPY --chown=user:user ./examples /home/user/examples
