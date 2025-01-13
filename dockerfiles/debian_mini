@@ -8,8 +8,6 @@ RUN apt-get -y install apt-utils gcc \
 	file luajit make lua50 dialog curl \
 	less cowsay netcat-openbsd
 
-RUN pip install pyrdfrules
-
 RUN useradd -m user && echo "user:password" | chpasswd
 COPY --chown=user:user ./examples /home/user/examples
 RUN chmod -R +x  /home/user/examples/lua
