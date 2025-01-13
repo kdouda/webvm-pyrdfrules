@@ -1,6 +1,5 @@
 FROM --platform=i386 i386/alpine:latest
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apk clean && apk update && apk -y upgrade
 RUN apk add python3
 
 RUN python -m ensurepip --upgrade
